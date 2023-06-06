@@ -12,24 +12,46 @@
 
       gtag('config', 'G-4C249237CX');
     </script>
-  </head>
-  <body>
-  <div class="navbar">
-    <img src="https://i.ibb.co/BgYWhZh/logo1.png" id="logo">
-    <a href="#">Ссылка1</a>
-    <a href="#">Ссылка2</a>
-    <a href="#">Ссылка3</a> 
-  </div>
-  <div>
-    <canvas id="Canvas" width="500" height="400" style="margin-top: 150px;"></canvas>
-  </div>
-  <div>
-    <label for="function" data-tooltip = "Функция может представлять собой прямую линию">Введите функцию:</label>
-    <input type="text" id="function">
-    <button id="degree-button">Добавить степень</button>
-    <button id="sqrt-button">Добавить корень</button>
-    <button id="draw-button">Рисовать</button>
-  </div>
-  </body>
-  <script src="index.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        
+        #container {
+            perspective: 100px;
+            width: 200px;
+            height: 200px;
+        }
+        
+        #image {
+            position: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="image" src="https://media.discordapp.net/attachments/740936897152548914/1025494020513861632/thisdog.gif" alt="Картинка">
+    </div>
+
+    <script>
+        var container = document.getElementById('container');
+        var image = document.getElementById('image');
+
+        document.addEventListener('mousemove', function (e) {
+            let fuck = 30
+            let dx = e.pageX - window.innerWidth / 2;
+            let dy = e.pageY - window.innerHeight / 2;
+            let angleX = -fuck * dy / (window.innerHeight / 2);
+            let angleY = fuck * dx / (window.innerWidth / 2);
+            image.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        });
+    </script>
+</body>
 </html>
